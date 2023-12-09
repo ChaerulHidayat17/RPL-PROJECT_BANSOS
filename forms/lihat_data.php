@@ -24,6 +24,7 @@ echo "<html>
     h2 {
         text-align: center;
         color: #007bff;
+        font-size: 50px;
     }
 
     table {
@@ -108,6 +109,7 @@ echo "</body></html>";
 
 $conn->close();
 ?>
+<br><br><br><br><br>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,19 +117,38 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data</title>
+
 </head>
 <style>
     h1 {
         text-align: center;
         color: #007bff;
     }
+
+    a {
+        border: 10px solid #007bff;
+        background: #007bff;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+
+    }
+
+    a:hover {
+        background: white;
+        color: #007bff;
+    }
 </style>
 
 <body>
     <h1>Kirim Notifikasi Bantuan Sosial</h1>
-    <form action="http://localhost/Bansos/api.php">
-        <button type="submit">Click me</button>
-    </form>
+    <br>
+    <a href="localhost/Bansos/api/php">KIRIM NOTIFIKASI</a>
+
 </body>
 
 </html>
