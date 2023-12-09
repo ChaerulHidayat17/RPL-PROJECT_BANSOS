@@ -1,12 +1,14 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "";
+$password = "";
 $db = "bansos";
-$conn = mysqli_connect($host, $user, $pass, $db);
-if ($conn == false) {
-    echo "Koneksi ke server gagal.";
-    die();
-} else
-    echo "Koneksi berhasil";
+
+$kon = mysqli_connect($host, $user, $password, $db);
+
+if (!$kon) {
+    die("koneksi gagal bro" . mysqli_connect_error());
+} else {
+    #echo "Koneksi Lancar Bro";
+}
 ?>
