@@ -1,0 +1,38 @@
+<?php
+// Detail koneksi database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bansos";
+
+// Buat koneksi database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Periksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Ambil data dari database
+$sql = "SELECT * FROM keluhan";
+$result = $conn->query($sql);
+
+// Periksa apakah ada data
+if ($result->num_rows > 0) {
+    // Tampilkan data
+    while ($row = $result->fetch_assoc()) {
+        echo "ID: " . $row["id"] . "<br>";
+        echo "Nama: " . $row["name"] . "<br>";
+        echo "Email: " . $row["email"] . "<br>";
+        echo "Subject: " . $row["subject"] . "<br>";
+        echo "Pesan: " . $row["message"] . "<br>";
+        echo "Tanggal Dikirim: " . $row["created_at"] . "<br>";
+        echo "<hr>";
+    }
+} else {
+    echo "Tidak ada data dalam database.";
+}
+
+// Tutup koneksi database
+$conn->close();
+?>

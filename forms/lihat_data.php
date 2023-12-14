@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password_db = "";
-$dbname = "bansos";
+$dbname = "bantuan-sosial";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password_db, $dbname);
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Ambil data dari database
-$sql = "SELECT * FROM pengguna";
+$sql = "SELECT * FROM user";
 $result = $conn->query($sql);
 
 // Tampilkan data dengan gaya yang lebih menarik
@@ -55,7 +55,7 @@ echo "<html>
 
     .ubah-btn,
     .hapus-btn {
-        background-color: #28a745;
+        background-color: #218838;
         color: #fff;
         padding: 8px 12px;
         border: none;
@@ -66,7 +66,7 @@ echo "<html>
 
     .ubah-btn:hover,
     .hapus-btn:hover {
-        background-color: #218838;
+        background-color: #007bff;
     }
 </style>
 </head>
@@ -74,11 +74,11 @@ echo "<html>
 
 echo "<h2>Data Penerima Bansos</h2>";
 echo "<table>";
-echo "<tr><th>ID_Pengguna</th><th>Nama_Pengguna</th><th>NIK</th><th>No_Whatsapp</th><th>Alamat</th><th>Password</th><th>Aksi</th></tr>";
+echo "<tr><th>ID_Pengguna</th><th>Nama_Pengguna</th><th>NIK</th><th>No_Whatsapp</th><th>Alamat</th><th>Gaji</th><th>Aksi</th></tr>";
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["ID_Pengguna"] . "</td><td>" . $row["Nama_Pengguna"] . "</td><td>" . $row["NIK"] . "</td><td>" . $row["No_Whatsapp"] . "</td><td>" . $row["Alamat"] . "</td><td>" . $row["Password"] . "</td>";
+        echo "<tr><td>" . $row["ID_Pengguna"] . "</td><td>" . $row["Nama_Pengguna"] . "</td><td>" . $row["NIK"] . "</td><td>" . $row["No_Whatsapp"] . "</td><td>" . $row["Alamat"] . "</td><td>" . $row["Gaji"] . "</td>";
         echo "<td><button class='ubah-btn' onclick='ubahData(" . $row["ID_Pengguna"] . ")'>Ubah</button>";
         echo "<button class='hapus-btn' onclick='hapusData(" . $row["ID_Pengguna"] . ")'>Hapus</button></td></tr>";
     }
@@ -147,7 +147,7 @@ $conn->close();
 <body>
     <h1>Kirim Notifikasi Bantuan Sosial</h1>
     <br>
-    <a href="localhost/Bansos/api/php">KIRIM NOTIFIKASI</a>
+    <a href="api.php">KIRIM NOTIFIKASI</a>
 
 </body>
 

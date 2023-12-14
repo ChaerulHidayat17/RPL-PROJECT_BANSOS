@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password_db = "";
-$dbname = "bansos";
+$dbname = "bantuan-sosial";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password_db, $dbname);
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $no_whatsapp_baru = htmlspecialchars($_POST["no_whatsapp_baru"]);
 
     // Update data dalam database
-    $sql = "UPDATE pengguna SET Nama_Pengguna='$nama_pengguna_baru', Alamat='$alamat_baru', No_Whatsapp='$no_whatsapp_baru' WHERE ID_Pengguna=$id_pengguna";
+    $sql = "UPDATE user SET Nama_Pengguna='$nama_pengguna_baru', Alamat='$alamat_baru', No_Whatsapp='$no_whatsapp_baru' WHERE ID_Pengguna=$id_pengguna";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data berhasil diubah!";
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (isset($_GET["id"])) {
     $id_pengguna = $_GET["id"];
 
-    $sql_select = "SELECT * FROM pengguna WHERE ID_Pengguna=$id_pengguna";
+    $sql_select = "SELECT * FROM user WHERE ID_Pengguna=$id_pengguna";
     $result_select = $conn->query($sql_select);
 
     if ($result_select->num_rows > 0) {
@@ -64,7 +64,57 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubah Data</title>
-    <link rel="stylesheet" href="style.css"> <!-- Jika Anda memiliki file CSS terpisah -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,13 +124,13 @@ $conn->close();
             <input type="hidden" name="id_pengguna" value="<?php echo $id_pengguna; ?>">
 
             <label for="nama_pengguna_baru">Nama Pengguna Baru:</label>
-            <input type="text" name="nama_pengguna_baru" value="<?php echo $nama_pengguna; ?>"><br>
+            <input type="text" name="nama_pengguna_baru" value="<?php echo $nama_pengguna; ?>">
 
             <label for="alamat_baru">Alamat Baru:</label>
-            <input type="text" name="alamat_baru" value="<?php echo $alamat; ?>"><br>
+            <input type="text" name="alamat_baru" value="<?php echo $alamat; ?>">
 
             <label for="no_whatsapp_baru">No Whatsapp Baru:</label>
-            <input type="text" name="no_whatsapp_baru" value="<?php echo $no_whatsapp; ?>"><br>
+            <input type="text" name="no_whatsapp_baru" value="<?php echo $no_whatsapp; ?>">
 
             <button type="submit">Simpan Perubahan</button>
         </form>

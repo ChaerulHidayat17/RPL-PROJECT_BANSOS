@@ -77,8 +77,8 @@
 			<label for="alamat">Alamat:</label>
 			<input type="text" name="alamat" required><br>
 
-			<label for="password">Password:</label>
-			<input type="password" name="password" required><br>
+			<label for="gaji">Masukan Gaji Anda:</label>
+			<input type="number" name="gaji" required><br>
 
 			<button type="submit">Daftar</button>
 		</form>

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password_db = "";
-$dbname = "bansos";
+$dbname = "bantuan-sosial";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password_db, $dbname);
@@ -18,7 +18,7 @@ if (isset($_GET["id"])) {
     $id_pengguna = $_GET["id"];
 
     // Hapus data dari database
-    $sql = "DELETE FROM pengguna WHERE ID_Pengguna=$id_pengguna";
+    $sql = "DELETE FROM user WHERE ID_Pengguna=$id_pengguna";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data berhasil dihapus!";
