@@ -1,38 +1,36 @@
 <?php
-// Koneksi ke database
-$servername = "localhost";
+// Detail koneksi database
+$host = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bantuan-sosial";
+$database = "bantuan-sosial";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Membuat koneksi database
+$conn = new mysqli($host, $username, $password, $database);
 
-// Periksa koneksi
+// Memeriksa koneksi
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Ambil data dari formulir
-$name = $_POST['name'];
-$email = $_POST['email'];
-$subject = $_POST['subject'];
-$message = $_POST['message'];
+// Memeriksa apakah formulir dikirimkan
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-send"])) {
+    // Mengumpulkan data formulir
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
 
-// Lindungi dari SQL Injection
-$name = mysqli_real_escape_string($conn, $name);
-$email = mysqli_real_escape_string($conn, $email);
-$subject = mysqli_real_escape_string($conn, $subject);
-$message = mysqli_real_escape_string($conn, $message);
+    // Memasukkan data ke dalam database
+    $sql = "INSERT INTO keluhan (name, email, subject, message, created_at) VALUES ('$name', '$email', '$subject', '$message', NOW())";
 
-// Query untuk menyimpan data ke database
-$sql = "INSERT INTO keluhan (name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
+    if ($conn->query($sql) === TRUE) {
+        echo '<div class="sent-message">Pesan Anda telah terkirim. Terima kasih!</div>';
+    } else {
+        echo '<div class="error-message">Error: ' . $conn->error . '</div>';
+    }
 
-if ($conn->query($sql) === TRUE) {
-    echo '<div class="sent-message">Pesan Anda telah terkirim dan disimpan ke database. Terima kasih!</div>';
-} else {
-    echo '<div class="error-message">Terjadi kesalahan. Silakan coba lagi nanti.</div>';
+    // Menutup koneksi database
+    $conn->close();
 }
-
-// Tutup koneksi database
-$conn->close();
 ?>
