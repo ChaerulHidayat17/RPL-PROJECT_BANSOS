@@ -9,7 +9,9 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
+
 <body>
+
     <h1 class="text-xl text-primary text-center m-5 p-5">Pemberitahuan Bantuan Sosial Turun</h1>
     <br><br>
     <div class="container d-flex justify-content-center mt-5">

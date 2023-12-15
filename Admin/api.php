@@ -4,7 +4,7 @@
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$database = "bansos";
+$database = "bantuan-sosial";
 
 // Membuat koneksi ke database
 $conn = new mysqli($hostname, $username, $password, $database);
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Query untuk mengambil nomor telepon dari database
-$sql = "SELECT No_Whatsapp FROM pengguna";
+$sql = "SELECT No_Whatsapp FROM user";
 $result = $conn->query($sql);
 
 // Memeriksa apakah query berhasil
@@ -24,7 +24,8 @@ if ($result) {
 
     // Mengambil nomor telepon dan menambahkannya ke dalam array
     while ($row = $result->fetch_assoc()) {
-        $nomorTelepon[] = $row['No_Whatsapp'];
+        $nomorTelepon[] = $ro
+        ['No_Whatsapp'];
     }
 
     // Menutup koneksi database
@@ -44,17 +45,7 @@ if ($result) {
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array(
             'target' => implode(',', $nomorTelepon),
-            'message' => 'Pengumuman Penting: Penyaluran  Bantuan Sosial
-
-            Kami dengan senang hati mengumumkan bahwa program bantuan sosial akan diselenggarakan pada:
-            
-            Tanggal: [20 Maret 2024]
-            
-            Hari: [Minggu]
-            
-            Jam: [09:00 - 15:00]
-            
-            Lokasi: [Kantor Desa Konoha]',
+            'message' => '',
             'delay' => '10',
 
         ),
