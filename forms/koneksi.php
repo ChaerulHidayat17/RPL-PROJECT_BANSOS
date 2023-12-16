@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$db = "bansos";
+$db = "bantuan-sosial";
 
 $kon = mysqli_connect($host, $user, $password, $db);
 

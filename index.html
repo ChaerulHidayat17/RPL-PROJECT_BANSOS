@@ -23,6 +23,7 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -226,7 +227,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="Admin/register.php">Form Pendaftaran</a></h4>
+              <h4><a href="forms/register.php">Form Pendaftaran</a></h4>
               <p>Daftarkan keluarga anda untuk mendapatkan bantuan sosial</p>
             </div>
           </div>
@@ -455,39 +456,33 @@
           </div>
            
           <div class="col-lg-6">
-            <form action="contact.php" method="post" role="form" class="php-email-form">
-                <div class="row">
-                    <div class="col form-group">
-                        <label for="name">Nama:</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Masukan Nama" required>
-                    </div>
-                    <div class="col form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukan Email" required>
-                    </div>
+          <form method="post" action="feedback.php" name="emailContact">
+            <div class="input-row">
+              <label>Name <em>*</em></label>
+              <input type="text" name="userName" required>
+              </div>
+            <div class="input-row">
+              <label>Email <em>*</em></label>
+              <input type="text" name="userEmail" required>
+              </div>
+            <div class="input-row">
+              <label>Phone <em>*</em></label>
+              <input type="text" name="userPhone" required>
+              </div>
+            <div class="input-row">
+              <label>Message <em>*</em></label>
+              <textarea name="userMessage" required></textarea>
+              </div>
+              <div class="input-row">
+                <input type="submit" name="send" value="Submit">
+                <div class="success">
+                  <strong>Success</strong>
                 </div>
-                <div class="form-group">
-                    <label for="subject">Subject:</label>
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Pesan:</label>
-                    <textarea class="form-control" name="message" rows="5" placeholder="Isi Pesan" required></textarea>
-                </div>
-                <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Pesan Anda telah terkirim. Terima kasih!</div>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-success" name="btn-send">Kirim Pesan</button>
-                </div>
+              </div>
             </form>
         </div>
 
-        </div>
-
-      </div>
+       
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
