@@ -1,67 +1,51 @@
 <?php
-// Konfigurasi koneksi database
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "bantuan-sosial";
+$servername = "localhost";  // Ganti dengan nama server Anda
+$username = "root";         // Ganti dengan nama pengguna database Anda
+$password = "";             // Ganti dengan kata sandi database Anda
+$dbname = "bantuan-sosial";   // Ganti dengan nama database Anda
 
-$conn = new mysqli($host, $username, $password, $database);
+// Buat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Memeriksa koneksi
+// Periksa koneksi
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Mengambil data dari database
-$sql = "SELECT * FROM feedback";
+// Tampilkan tombol/link
+echo '<a href="/Bansos/Admin/index.php" class="btn btn-primary" style="position: fixed; top: 10px; left: 10px;">Kembali ke Admin</a>';
+
+// Ambil data dari database
+$sql = "SELECT * FROM feedback";  // Ganti "nama_tabel" dengan nama tabel yang sesuai
 $result = $conn->query($sql);
 
-// Menampilkan data dengan gaya CSS inline
+// Tampilkan data jika ada
 if ($result->num_rows > 0) {
-    echo "<style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    echo "<table border='1'>
+            <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Phone</th>
+                <th>User Message</th>
+            </tr>";
 
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>";
-
-    echo "<table>
-        <tr>
-            <th>ID</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Message</th>
-            <th>Created At</th>
-        </tr>";
-
+    // Output data dari setiap baris
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
-            <td>{$row['id']}</td>
-            <td>{$row['user_name']}</td>
-            <td>{$row['user_email']}</td>
-            <td>{$row['user_phone']}</td>
-            <td>{$row['user_message']}</td>
-            <td>{$row['created_at']}</td>
-        </tr>";
+                <td>" . $row["id"] . "</td>
+                <td>" . $row["user_name"] . "</td>
+                <td>" . $row["user_email"] . "</td>
+                <td>" . $row["user_phone"] . "</td>
+                <td>" . $row["user_message"] . "</td>
+            </tr>";
     }
 
     echo "</table>";
 } else {
-    echo "Tidak ada data dalam database.";
+    echo "Tidak ada data.";
 }
 
-// Menutup koneksi database
+// Tutup koneksi
 $conn->close();
 ?>

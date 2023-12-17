@@ -29,6 +29,7 @@ if (!is_numeric($nik) || !is_numeric($gaji)) {
 // Periksa gaji
 if ($gaji > 3000000) {
     echo '<p style="color: white; font-size: 40px; margin-bottom: 20px; padding: 15px; border: 2px solid #28a745; border-radius: 8px; background-color: red;">Pendaftaran gagal! Anda tidak termasuk penerima bantuan karena gaji Anda lebih dari 3000000</p>';
+    echo '<a href="register.php"><button style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #337ab7; color: #fff; border: 1px solid #2e6da4; cursor: pointer;">Kembali ke Halaman Pendaftaran</button></a>';
 } else {
     // Siapkan dan jalankan kueri SQL untuk menyimpan data
     $sql = "INSERT INTO user (Nama_Pengguna, NIK, No_Whatsapp, Alamat, Gaji) VALUES (?, ?, ?, ?, ?)";
@@ -42,11 +43,15 @@ if ($gaji > 3000000) {
     // Eksekusi pernyataan
     if ($stmt->execute()) {
         echo '<p style="color: #28a745; font-size: 28px; margin-bottom: 20px; padding: 15px; border: 2px solid #28a745; border-radius: 8px; background-color: #d4edda;">Selamat Anda Berhasil Mendaftar Di Program Bantuan Sosial</p>';
-
+        echo '<a href="register.php"><button style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #337ab7; color: #fff; border: 1px solid #2e6da4; cursor: pointer;">Kembali ke Halaman Pendaftaran</button></a>';
     } else {
-        echo '<p style="color: #dc3545; font-size: 24px; margin-bottom: 20px;">Terjadi kesalahan saat mendaftar.<br>Silakan coba lagi nanti.</p>';
-        echo '<p>Error: ' . $sql . '<br>' . $conn->error . '</p>';
+        echo '<p style="color: #dc3545; font-size: 28px; margin-bottom: 20px; padding: 15px; border: 2px solid #dc3545; border-radius: 8px; background-color: #f8d7da;">Maaf, Anda Gagal Mendaftar Di Program Bantuan Sosial</p>';
+        echo '<p style="color: #dc3545; font-size: 18px;">Error: ' . $stmt->error . '</p>';
+        echo '<a href="register.php"><button style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #dc3545; color: #fff; border: 1px solid #dc3545; cursor: pointer;">Kembali ke Halaman Pendaftaran</button></a>';
     }
+
+
+
 
     // Tutup pernyataan
     $stmt->close();

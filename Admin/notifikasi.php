@@ -11,7 +11,8 @@
 
 
 <body>
-
+    <div class="btn btn-primary m-3">Kembali Ke Admin<a href="/Bansos/Admin/index.php">Kembali ke Halaman Admin</a>
+    </div>
     <h1 class="text-xl text-primary text-center m-5 p-5">Pemberitahuan Bantuan Sosial Turun</h1>
     <br><br>
     <div class="container d-flex justify-content-center mt-5">

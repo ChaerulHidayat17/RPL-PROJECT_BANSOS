@@ -24,6 +24,7 @@
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 			padding: 20px;
 			width: 300px;
+			position: relative;
 		}
 
 		h2 {
@@ -49,7 +50,8 @@
 		button {
 			background-color: #007bff;
 			color: #fff;
-			padding: 10px;
+			padding: 15px;
+			/* Disesuaikan padding untuk tombol yang lebih besar */
 			border: none;
 			border-radius: 4px;
 			cursor: pointer;
@@ -58,10 +60,33 @@
 		button:hover {
 			background-color: #0056b3;
 		}
+
+		/* Ditambahkan gaya untuk tombol "Kembali" di pojok kiri atas */
+		.top-left-button {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px;
+			/* Disesuaikan padding untuk tombol yang lebih besar */
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			text-decoration: none;
+			/* Menghapus garis bawah tautan default */
+		}
+
+		.top-left-button:hover {
+			background-color: #0056b3;
+		}
 	</style>
 </head>
 
 <body>
+	<!-- Tombol "Kembali" di luar kontainer -->
+	<a href="../index.html" class="top-left-button">Kembali</a>
+
 	<div class="container">
 		<h2>Formulir Pendaftaran</h2>
 		<form action="proses.php" method="post">

@@ -23,8 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
 
     if ($conn->query($sql) === TRUE) {
         echo '<div style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #dff0d8; color: #3c763d; border: 1px solid #d6e9c6;">Pesan Anda telah terkirim. Terima kasih!</div>';
+        echo '<a href="index.html"><button style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #337ab7; color: #fff; border: 1px solid #2e6da4; cursor: pointer;">Kembali ke Halaman Utama</button></a>';
     } else {
         echo '<div style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #f2dede; color: #a94442; border: 1px solid #ebccd1;">Maaf, pesan tidak dapat dikirim. Silakan coba lagi nanti.</div>';
+        echo '<a href="index.html"><button style="margin-top: 15px; padding: 10px; border-radius: 4px; font-weight: bold; background-color: #337ab7; color: #fff; border: 1px solid #2e6da4; cursor: pointer;">Kembali ke Halaman Utama</button></a>';
     }
 
 

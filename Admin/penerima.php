@@ -117,36 +117,32 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
 
+        a {
+            border: 10px solid #007bff;
+            background: #007bff;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
 </head>
-<style>
-    h1 {
-        text-align: center;
-        color: #007bff;
-    }
-
-    a {
-        border: 10px solid #007bff;
-        background: #007bff;
-        padding: 10px;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        display: flex;
-        justify-content: center;
-        margin: 0;
-
-    }
-
-    a:hover {
-        background: white;
-        color: #007bff;
-    }
-</style>
 
 <body>
-
-
+    <!-- Tombol "Kembali ke Halaman Admin" -->
+    <a href="/Bansos/Admin/index.php">Kembali ke Halaman Admin</a>
 </body>
 
 </html>
