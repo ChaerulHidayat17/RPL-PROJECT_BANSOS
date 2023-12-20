@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
         // Login sukses
         // Sesuaikan tindakan yang diambil setelah login berhasil
         // Contoh: Redirect ke halaman admin
-        header("Location: admin.html");
+        header("Location: /Bansos/Admin/index.php");
         exit(); // Pastikan untuk mengakhiri eksekusi skrip setelah mengarahkan pengguna
     } else {
         // Password salah, tambahkan pesan kesalahan

@@ -6,6 +6,9 @@ $username = "root";
 $password = "";
 $database = "bantuan-sosial";
 
+// Target WHATSAPP
+$pesan = $_POST['pesan'];
+
 // Membuat koneksi ke database
 $conn = new mysqli($hostname, $username, $password, $database);
 
@@ -24,7 +27,7 @@ if ($result) {
 
     // Mengambil nomor telepon dan menambahkannya ke dalam array
     while ($row = $result->fetch_assoc()) {
-        $nomorTelepon[] = $ro
+        $nomorTelepon[] = $row
         ['No_Whatsapp'];
     }
 
@@ -45,12 +48,12 @@ if ($result) {
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array(
             'target' => implode(',', $nomorTelepon),
-            'message' => '',
-            'delay' => '10',
+            'message' => $pesan,
+            'delay' => '30',
 
         ),
         CURLOPT_HTTPHEADER => array(
-            'Authorization: 4V3i6vgRcG_e9Gg8EJJq'
+            'Authorization: '
         ),
     ));
 

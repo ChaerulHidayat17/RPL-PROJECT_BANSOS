@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Ambil data dari database untuk ditampilkan pada formulir
+// Ambil data dari database untuk ditampilkan pada formulir
 if (isset($_GET["id"])) {
     $id_pengguna = $_GET["id"];
 
@@ -46,13 +47,18 @@ if (isset($_GET["id"])) {
         $alamat = $row["Alamat"];
         $no_whatsapp = $row["No_Whatsapp"];
     } else {
-        echo "Data tidak ditemukan.";
+        echo "<p>Data tidak ditemukan.</p>";
+        echo '<a href="/Bansos/Admin/index.php" style="display: inline-block; padding: 10px 15px; background-color: #0056b3; color: #fff; text-decoration: none; border: 1px solid #004080; border-radius: 4px; transition: background-color 0.3s ease;">Kembali ke Halaman Utama</a>';
         exit();
     }
 } else {
-    echo "ID Pengguna tidak diberikan.";
+    echo "<p>ID Pengguna tidak diberikan.</p>";
+    echo '<a href="/Bansos/Admin/index.php" style="display: inline-block; padding: 10px 15px; background-color: #0056b3; color: #fff; text-decoration: none; border: 1px solid #004080; border-radius: 4px; transition: background-color 0.3s ease;">Kembali ke Halaman Utama</a>';
     exit();
 }
+
+
+
 
 $conn->close();
 ?>
@@ -64,6 +70,8 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubah Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -133,6 +141,7 @@ $conn->close();
             <input type="text" name="no_whatsapp_baru" value="<?php echo $no_whatsapp; ?>">
 
             <button type="submit">Simpan Perubahan</button>
+
         </form>
     </div>
 </body>
